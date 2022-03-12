@@ -21,10 +21,7 @@ class ServiceProvider extends IlluminateServiceProvider{
      * @return void
     **/
     public function boot(Router $router){
-        if(!$this->app->routesAreCached()){
-            $router->group([ "middleware" => "web" ], function(){ require __DIR__ . "/../ressources/routes.php"; });
-            $this->loadViewsFrom(__DIR__ )
-        }
+        if(!$this->app->routesAreCached()) $router->group([ "middleware" => "web" ], function(){ require __DIR__ . "/../ressources/routes.php"; });
 
         $this->loadViewsFrom(__DIR__ . "/../ressources/views", "cas-server");
         $this->loadViewsFrom(__DIR__ . "/../ressources/xml", "cas-server-xml");
