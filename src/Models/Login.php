@@ -65,7 +65,7 @@ class Login extends Model{
         }
 
         throw new \Exception(
-            "Invalid 'throttleBy' setting : " $this->throttleByConfig . "." .
+            "Invalid 'throttleBy' setting : " . $this->throttleByConfig . "." .
             "Valid settings are 'username', 'ip' or 'ipAndUsername' (= 'usernameAndIp')"
         );
     }
