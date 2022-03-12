@@ -20,12 +20,12 @@ class CreateCasTicketTable extends Migration{
         Schema::create("cas-ticket", function(Blueprint $table){
             $table->string("id", 32);
             $table->primary("id");
-            $table->bigInteger("authenticationID");
+            $table->bigInteger("authenticationID")->unsigned();
             $table->string("service");
             $table->boolean("renew");
             $table->boolean("used");
             $table->dateTime("createdAt");
-            $table->foreign("authenticationId")->references("id")->on("CASAuthentication");
+            $table->foreign("authenticationID")->references("id")->on("cas-authentication");
         });
     }
 
