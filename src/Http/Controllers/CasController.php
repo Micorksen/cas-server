@@ -27,7 +27,10 @@ class CasController extends Controller{
     **/
     public function __construct(Request $request){
         if(config("cas-server.disableNonSSL", false) && !$request->secure()) throw new \Exception("Request is not in SSL.");
-        if(!session()->isStarted()) throw new \Exception("Sessions are required for CAS Server. Please re-enable the session middleware.");
+        if(!session()->isStarted()){
+            try{ session()->start(); }
+            catch(\Exception $exception){ throw new \Exception("Sessions are required for CAS Server. Please re-enable the session middleware."); }
+        }
     }
 
     /**
