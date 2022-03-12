@@ -29,7 +29,7 @@ class ServiceProvider extends IlluminateServiceProvider{
         $this->publishes([ __DIR__ . "/../config/cas-server.php" => config_path("cas-server.php") ], "config");
         $this->publishes([ __DIR__ . "/../database/migrations/" => database_path("migrations") ], "migrations");
         $this->publishes([ __DIR__ . "/../public/vendor/cas-server" => public_path("vendor/cas-server") ], "public");
-        $this->publishes([ __DIR__ . "/../resources/views" => base_path(__DIR__ . "/../resources/views/vendor/cas-server") ], "views");
+        $this->publishes([ __DIR__ . "/../resources/views" => base_path("resources/views/vendor/cas-server") ], "views");
     }
 
     /**
