@@ -100,7 +100,7 @@ class Login extends Model{
     **/
     public function validate($username, $ip, $password){
         $this->throttle($this->throttleBy($username, $ip));
-        return new $this->userClass->checkLogin($username, $password) ? true : false;
+        return (new $this->userClass)->checkLogin($username, $password) ? true : false;
     }
 
     /**
@@ -108,5 +108,5 @@ class Login extends Model{
      * @param string $username
      * @return array
     **/
-    public function userAttributes($username){ return new $this->userClass->userAttributes($username); }
+    public function userAttributes($username){ return (new $this->userClass)->userAttributes($username); }
 }
