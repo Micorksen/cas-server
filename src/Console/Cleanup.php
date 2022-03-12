@@ -14,7 +14,7 @@ use Micorksen\CasServer\Models\Authentification;
 use Micorksen\CasServer\Models\Ticket;
 use Illuminate\Console\Command;
 
-class Cleanup extends Commands{
+class Cleanup extends Command{
     /**
      * The name and signature of the console command.
      * @var string
