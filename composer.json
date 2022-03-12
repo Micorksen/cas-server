@@ -1,0 +1,19 @@
+{
+    "name": "micorksen/cas-server",
+    "description": "An implementation for CAS (Laravel 8x) - Based on loren138/cas-server",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Micorksen\\CasServer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Micorksen",
+            "email": "hello@micorksen.xyz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
