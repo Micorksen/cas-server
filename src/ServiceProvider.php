@@ -21,15 +21,15 @@ class ServiceProvider extends IlluminateServiceProvider{
      * @return void
     **/
     public function boot(Router $router){
-        if(!$this->app->routesAreCached()) $router->group([ "middleware" => "web" ], function(){ require __DIR__ . "/../ressources/routes.php"; });
+        if(!$this->app->routesAreCached()) $router->group([ "middleware" => "web" ], function(){ require __DIR__ . "/../resources/routes.php"; });
 
-        $this->loadViewsFrom(__DIR__ . "/../ressources/views", "cas-server");
-        $this->loadViewsFrom(__DIR__ . "/../ressources/xml", "cas-server-xml");
+        $this->loadViewsFrom(__DIR__ . "/../resources/views", "cas-server");
+        $this->loadViewsFrom(__DIR__ . "/../resources/xml", "cas-server-xml");
 
         $this->publishes([ __DIR__ . "/../config/cas-server.php" => config_path("cas-server.php") ], "config");
         $this->publishes([ __DIR__ . "/../database/migrations/" => database_path("migrations") ], "migrations");
         $this->publishes([ __DIR__ . "/../public/vendor/cas-server" => public_path("vendor/cas-server") ], "public");
-        $this->publishes([ __DIR__ . "/../ressources/views" => base_path(__DIR__ . "/../ressources/views/vendor/cas-server") ], "views");
+        $this->publishes([ __DIR__ . "/../resources/views" => base_path(__DIR__ . "/../resources/views/vendor/cas-server") ], "views");
     }
 
     /**
@@ -38,7 +38,7 @@ class ServiceProvider extends IlluminateServiceProvider{
     **/
     public function register(){
         $this->mergeConfigFrom(__DIR__ . "/../config/cas-server.php", "cas-server");
-        $this->app["command.cas-server.cleanup"] = $this->app->share(function(){ return new Cleanup(); });
+        $this->app["command.cas-server.cleanup"] = $this->app->singleton(Cleanup::class, function(){ return new Cleanup(); });
         $this->commands("command.cas-server.cleanup");
     }
 }
