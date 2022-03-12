@@ -32,7 +32,7 @@ class Login extends Model{
      * @return void
     **/
     public function __construct(array $attributes = []){
-        parent::_construct($attributes);
+        parent::__construct($attributes);
         $this->throttleByConfig = config("cas-server.loginThrottling.throttleBy", "username");
         $this->maximumAttemptsBeforeThrottle = intval(config("cas-server.loginThrottling.maximumAttemptsBeforeThrottle", 3), 10);
         $this->secondsBetweenAttempts = intval(config("cas-server.loginThrottling.secondsBetweenAttempts", 3), 10);
