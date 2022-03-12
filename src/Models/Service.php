@@ -13,7 +13,7 @@ class Service{
     private $services;
     public function __construct(){ $this->services = collect(config("cas-server.services")); }
     public function validate($service){ return $this->services->first(function($value, $key) use($service){ return preg_match("#" . $value["urlRegex"] . "#", $service); }, false); }
-    public function redirect($service, $ticket){ return $service . (str_contains($service, "?") : "&" : "?") . "ticket=" . urlencode($ticket);}
+    public function redirect($service, $ticket){ return $service . (str_contains($service, "?") ? "&" : "?") . "ticket=" . urlencode($ticket); }
     public function attributes($service, $userAttributes){
         $service = $this->validate($service);
         return (!is_array($service) || !array_key_exists("attributes", $service) ? [] : collect($userAttributes)->only($service["attributes"])->all();
