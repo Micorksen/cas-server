@@ -102,7 +102,7 @@ class CasController extends Controller{
     **/
     public function postLogin(Request $request, Service $service, Login $login, Authentication $authentication, Ticket $ticket){
         $user = $request->input("username");
-        if($login->validate($user, $request->ip(), $request->input("password")){
+        if($login->validate($user, $request->ip(), $request->input("password"))){
             $auth = $authentication->login($user, $login->userAttributes($user), $request->secure());
             return $this->validLogin($request, $auth, $service, $ticket, true);
         } else return $this->loginPage($service, $request->input("service"), "Invalid Login", $request->secure());
