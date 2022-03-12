@@ -104,7 +104,7 @@ return [
         [
             "name" => "Test application",
             "description" => "Access to your test application.",
-            "urlRegex" => "^(https?)://([A-Za-z0-9_-]+\.)app(/.*){0,1}$"
+            "urlRegex" => "^(https?)://([A-Za-z0-9_-]+\.)app(/.*){0,1}$",
             "attributes" => ["ROLE", "GRANTED_ACCESS"]
         ]
     ],
