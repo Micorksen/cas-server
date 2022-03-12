@@ -31,7 +31,7 @@ class Ticket extends Model{
      * @return void
     **/
     public function __construct(array $attributes = []){
-        parent::_construct($attributes);
+        parent::__construct($attributes);
         $this->maximumInterval = config("cas-server.timeouts.ticketTimeout", "10 seconds");
         if(config("cas-server.dateFormatOverride")) $this->setDateFormat(config("cas-server.dateFormatOverride"));
     }
