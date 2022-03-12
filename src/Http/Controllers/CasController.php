@@ -154,7 +154,7 @@ class CasController extends Controller{
                 ]
             ];
 
-            if($attributes) $response["serviceResponse"]["authenticationSuccess"]["attributes"] = $service->attributes($request->input("service"), $valid->authentication->attributeJson);            }
+            if($attributes) $response["serviceResponse"]["authenticationSuccess"]["attributes"] = $service->attributes($request->input("service"), $valid->authentication->attributeJson);
         } else{
             $response = [
                 "serviceResponse" => [
