@@ -38,7 +38,7 @@ class Authentication extends Model{
      * @return void
     **/
     public function __construct(array $attributes = []){
-        parent::_construct($attributes);
+        parent::__construct($attributes);
         $this->maximumTime = config("cas-server.timeouts.ssoSessionTimeout", "8 hours");
         $this->maximumInterval = config("cas-server.timeouts.ssoSessionMaximumIdle", "40 minutes");
         if(config("cas-server.dateFormatOverride")) $this->setDateFormat(config("cas-server.dateFormatOverride"));
