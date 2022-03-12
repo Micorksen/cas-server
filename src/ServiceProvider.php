@@ -38,7 +38,6 @@ class ServiceProvider extends IlluminateServiceProvider{
     **/
     public function register(){
         $this->mergeConfigFrom(__DIR__ . "/../config/cas-server.php", "cas-server");
-        $this->app["command.cas-server.cleanup"] = $this->app->singleton(Cleanup::class, function(){ return new Cleanup(); });
-        $this->commands("command.cas-server.cleanup");
+        $this->commands([ Cleanup::class ]);
     }
 }
