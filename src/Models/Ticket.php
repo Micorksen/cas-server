@@ -145,7 +145,7 @@ class Ticket extends Model{
 
         if(!$ticket) return "INVALID_TICKET_SPEC";
         $ticket = $this->where("id", "=", $ticket)
-            ->where("createdAt", ">" Carbon::parse("-" . $this->maximumInterval))
+            ->where("createdAt", ">", Carbon::parse("-" . $this->maximumInterval))
             ->first();
 
         if(is_null($ticket) || $ticket->used) return "INVALID_TICKET";
