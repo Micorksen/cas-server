@@ -161,5 +161,5 @@ class Ticket extends Model{
      * Aauthentication.
      * @return void
     **/
-    public function authentication(){ return $this->belongsTo("Micorksen\CasServer\Models\authentication", "authenticationID"); }
+    public function authentication(){ return $this->belongsTo("Micorksen\CasServer\Models\Authentication", "authenticationID"); }
 }
