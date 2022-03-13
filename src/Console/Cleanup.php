@@ -10,7 +10,7 @@
 
 namespace Micorksen\CasServer\Console;
 
-use Micorksen\CasServer\Models\Authentification;
+use Micorksen\CasServer\Models\Authentication;
 use Micorksen\CasServer\Models\Ticket;
 use Illuminate\Console\Command;
 
@@ -36,8 +36,8 @@ class Cleanup extends Command{
         $tickets = $ticket->cleanup();
         $this->info("Deleted $tickets expired ticket(s).");
 
-        $authentification = new Authentification();
-        $authentifications = $authentification->cleanup();
-        $this->info("Deleted $authentifications expired authentification session(s).");
+        $authentication = new Authentication();
+        $authentications = $authentication->cleanup();
+        $this->info("Deleted $authentications expired authentification session(s).");
     }
 }
