@@ -62,7 +62,9 @@ class CasController extends Controller{
     **/
     private function loginPage(Service $serviceModel, $service = "", $error = "", $secure = false){
         $serviceObject = false;
-        return $service && !$serviceModel->validate($service) ? $this->serviceError() : view("cas-server::login", compact("service", "error", "secure", "serviceObject"));
+        if($service) $serviceObject = $serviceModel->validate($service);
+
+        return !$serviceObject ? $this->serviceError() : view("cas-server::login", compact("service", "error", "secure", "serviceObject"));
     }
 
     /**
