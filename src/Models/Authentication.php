@@ -25,7 +25,7 @@ class Authentication extends Model{
         "createdAt"
     ];
 
-    private $sessionVariable = "cas-server.authenticationId";
+    private $sessionVariable = "cas-server.authenticationID";
     protected $casts = [
         "id" => "int",
         "attributeJson" => "array",
@@ -113,7 +113,7 @@ class Authentication extends Model{
      * Use authentication.
      * @return void
     **/
-    public function useauthentication(){
+    public function useAuthentication(){
         $this->lastUsed = Carbon::now();
         $this->save();
     }
@@ -122,7 +122,7 @@ class Authentication extends Model{
      * Get tickets.
      * @return Ticket
     **/
-    public function tickets(){ return $this->hasMany("Micorksen\CasServer\Models\Ticket", "authenticationId"); }
+    public function tickets(){ return $this->hasMany("Micorksen\CasServer\Models\Ticket", "authenticationID"); }
     
     /** 
      * Cleanup.
@@ -140,7 +140,7 @@ class Authentication extends Model{
             $ticket = new Ticket();
             $query->select(new Expression("1"))
                 ->from($ticket->table)
-                ->where($ticket->table . ".authenticationId", "=", new Expression($this->table . "." . $this->primaryKey));
+                ->where($ticket->table . ".authenticationID", "=", new Expression($this->table . "." . $this->primaryKey));
         })->delete();
     }
 }
