@@ -22,6 +22,6 @@
         @endif
     </cas:authenticationSuccess>
 @else
-    <cas:authenticationFailure code="{{ $serviceResponse['authenticationFailure']['code'] }} ">{{ $serviceResponse["authenticationFailure"]["description"] }}</cas:authenticationFailure>
+    <cas:authenticationFailure code="{{ $serviceResponse["authenticationFailure"]["code"] }}">{{ $serviceResponse["authenticationFailure"]["description"] }}</cas:authenticationFailure>
 @endif
 </cas:serviceResponse>
