@@ -88,7 +88,7 @@ class CasController extends Controller{
     private function validLogin(Request $request, Authentication $authentication, Service $service, Ticket $ticket, $renew){
         if($request->has("service")){
             $ser = $request->input("service");
-            return !$service->validate($ser) ? $this->serviceError() : redirect($service->redirect($ser, $ticket));
+            return !$service->validate($ser) ? $this->serviceError() : redirect($service->redirect($ser, $ticket->generateTicket($authentication, $ser, $renew)));
         }
 
         return view("cas-server::success", [ "user" => $authentication->username ]);
