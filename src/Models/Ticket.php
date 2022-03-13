@@ -42,9 +42,9 @@ class Ticket extends Model{
     **/
     public function randomString($length, $keySpace = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"){
         $string = "";
-        $maximum = mb_strlen($keySapce, "8bit") - 1;
+        $maximum = mb_strlen($keySpace, "8bit") - 1;
 
-        for($index = 0; $index < $length; ++$i){ $string .= $keySpace[random_int(0, $maximum)]; }
+        for($i = 0; $i < $length; ++$i){ $string .= $keySpace[random_int(0, $maximum)]; }
         return $string;
     }
 
@@ -63,7 +63,7 @@ class Ticket extends Model{
      * Delete tickets for authentication.
      * @return Ticket
     **/
-    public function deleteTicketsForauthentication($authenticationID){ return $this->where("authenticationId", "=", $authenticationID)->delete(); }
+    public function deleteTicketsForAuthentication($authenticationID){ return $this->where("authenticationID", "=", $authenticationID)->delete(); }
 
     /**
      * Get ticket prefix.
@@ -96,21 +96,21 @@ class Ticket extends Model{
 
     /** 
      * Generate ticket.
-     * @param authentication $authentication
+     * @param Authentication $authentication
      * @param $service
      * @param boolean $renew
      * @return Ticket
     **/ 
-    public function generateTicket(authentication $authentication, $service, $renew = false){
+    public function generateTicket(Authentication $authentication, $service, $renew = false){
         $ticket = new self;
         $ticket->id = $this->getID();
         $ticket->service = $service;
         $ticket->renew = $renew;
         $ticket->used = false;
-        $ticket->createAt = Carbon::now();
+        $ticket->createdAt = Carbon::now();
         $ticket->authentication()->associate($authentication);
 
-        $authentication->useauthentication();
+        $authentication->useAuthentication();
         $ticket->save();
 
         return $this->convertTicketID($ticket->id);
@@ -158,8 +158,8 @@ class Ticket extends Model{
     }
 
     /**
-     * authentication.
+     * Aauthentication.
      * @return void
     **/
-    public function authentication(){ return $this->belongsTo("Micorksen\CasServer\Models\authentication", "authenticationId"); }
+    public function authentication(){ return $this->belongsTo("Micorksen\CasServer\Models\authentication", "authenticationID"); }
 }
