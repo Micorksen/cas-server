@@ -27,4 +27,5 @@
             @yield("content")
         </div>
     </body>
+    <script src="/vendor/cas-server/cas-server.js"></script>
 </html>
